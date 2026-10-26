@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bunny Bash Addictions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-group">
+          <div class="brand-mark">🐇</div>
+          <div>
+            <p class="eyebrow">Bunny support</p>
+            <h1>Bunny Bash Addictions</h1>
+          </div>
+        </div>
+
+        <div class="topbar-status" id="header-status">
+          <span class="coin-pill">🪙 <strong id="coins-display">0</strong></span>
+          <span class="level-pill">Village <strong id="village-display">1</strong></span>
+        </div>
+      </header>
+
+      <main>
+        <section id="auth-screen" class="screen active">
+          <div class="panel auth-panel">
+            <div class="auth-copy">
+              <p class="eyebrow">Build your habit home</p>
+              <h2>Account setup</h2>
+              <p>
+                Keep your progress safe and carry your bunnies, wins, and updates anywhere you go.
+              </p>
+            </div>
+
+            <form id="auth-form" class="auth-form">
+              <label>
+                Username
+                <input id="username-input" type="text" maxlength="20" placeholder="bunlover42" required />
+              </label>
+              <label>
+                Password
+                <input id="password-input" type="password" placeholder="••••••••" required />
+              </label>
+              <button type="submit" class="primary-button large-button">Create account</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="onboarding-screen" class="screen hidden">
+          <div class="panel onboarding-panel">
+            <div class="intro-scene">
+              <div class="intro-bunny-wrap">
+                <div class="pixel-bunny intro-bunny" data-mood="happy">
+                  <div class="ear left"></div>
+                  <div class="ear right"></div>
+                  <div class="head">
+                    <span class="eye left"></span>
+                    <span class="eye right"></span>
+                    <span class="nose"></span>
+                  </div>
+                  <div class="body"></div>
+                  <div class="paw left"></div>
+                  <div class="paw right"></div>
+                </div>
+              </div>
+              <div class="speech-bubble intro-bubble">Hi, I’m Pip. We can do this one gentle step at a time.</div>
+            </div>
+
+            <div class="stepper" aria-label="Onboarding progress">
+              <span class="step-dot active"></span>
+              <span class="step-dot"></span>
+              <span class="step-dot"></span>
+              <span class="step-dot"></span>
+            </div>
+
+            <div class="story-box onboarding-story">
+              <p class="eyebrow" id="onboarding-step-label">Step 1 of 4</p>
+              <h2 id="onboarding-step-title">Welcome home</h2>
+              <p id="onboarding-step-copy">
+                We’re going to keep this gentle. One tiny step at a time, and your bunny village will grow with every win.
+              </p>
+            </div>
+
+            <div id="onboarding-step-content" class="onboarding-step-content"></div>
+
+            <div class="onboarding-actions">
+              <button id="onboarding-back" class="secondary-button" type="button">Back</button>
+              <button id="start-journey" class="primary-button large-button" type="button">Next</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="dashboard-screen" class="screen hidden">
+          <div class="dashboard-layout">
+            <aside class="panel bunny-home-panel">
+              <div class="panel-header compact">
+                <h3>Your bunny home</h3>
+                <span class="chip" id="mood-chip">Happy</span>
+              </div>
+
+              <div class="house-scene">
+                <div class="pixel-bunny large" data-mood="happy">
+                  <div class="ear left"></div>
+                  <div class="ear right"></div>
+                  <div class="head">
+                    <span class="eye left"></span>
+                    <span class="eye right"></span>
+                    <span class="nose"></span>
+                  </div>
+                  <div class="body"></div>
+                  <div class="paw left"></div>
+                  <div class="paw right"></div>
+                </div>
+                <div id="room-items" class="room-items"></div>
+              </div>
+
+              <div class="speech-bubble" id="bunny-speech">Pip is ready to help you build a calmer day.</div>
+            </aside>
+
+            <section class="panel action-panel">
+              <div class="panel-header compact">
+                <h3>Today’s check-in</h3>
+              </div>
+
+              <div class="action-list">
+                <button class="action-button success-button" data-action="success" type="button">
+                  <span class="action-icon">✅</span>
+                  <span>Log success</span>
+                </button>
+                <button class="action-button urge-button" data-action="urge" type="button">
+                  <span class="action-icon">💪</span>
+                  <span>Log urge</span>
+                </button>
+                <button class="action-button relapse-button" data-action="relapse" type="button">
+                  <span class="action-icon">🌧️</span>
+                  <span>Log relapse</span>
+                </button>
+              </div>
+
+              <div class="mini-stats">
+                <div class="mini-stat">
+                  <span class="mini-label">Current streak</span>
+                  <strong id="streak-value">0 days</strong>
+                </div>
+                <div class="mini-stat">
+                  <span class="mini-label">Daily reward</span>
+                  <strong id="daily-reward-value">15</strong>
+                </div>
+              </div>
+            </section>
+
+            <aside class="panel side-panel">
+              <div class="panel-header compact">
+                <h3>Progress</h3>
+              </div>
+
+              <div class="progress-list">
+                <div class="progress-item">
+                  <span>Total wins</span>
+                  <strong id="wins-value">0</strong>
+                </div>
+                <div class="progress-item">
+                  <span>Urges logged</span>
+                  <strong id="urges-value">0</strong>
+                </div>
+                <div class="progress-item">
+                  <span>Relapses</span>
+                  <strong id="relapses-value">0</strong>
+                </div>
+                <div class="progress-item">
+                  <span>Bunny mood</span>
+                  <strong id="mood-value">78%</strong>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="lower-grid">
+            <section class="panel shop-panel">
+              <div class="panel-header compact">
+                <h3>Bunny shop</h3>
+              </div>
+              <div id="shop-items" class="shop-grid"></div>
+            </section>
+
+            <section class="panel leaderboard-panel">
+              <div class="panel-header compact">
+                <h3>Global leaderboard</h3>
+              </div>
+              <ol id="leaderboard-list" class="leaderboard-list"></ol>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="coin-popups" class="coin-popups"></div>
+    <div id="toast" class="toast hidden" aria-live="polite"></div>
+
+    <div id="game-modal" class="modal hidden" aria-modal="true" role="dialog">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Bunny break game</h3>
+          <button type="button" id="close-game" class="close-button">×</button>
+        </div>
+        <div id="game-timer" class="game-timer">05:00</div>
+        <p>Find the lucky carrot before the timer runs out.</p>
+        <div id="game-board" class="game-board"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
